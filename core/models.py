@@ -43,10 +43,10 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     id= models.BigAutoField(primary_key= True)
-    order= models.ForeignKey(Order, on_delete=models.CASCADE)
+    order= models.ForeignKey(Order, on_delete=models.CASCADE, related_name = 'order_items')
     item= models.ForeignKey(Item, on_delete=models.CASCADE)
-    quantity= models.DecimalField()
-    price= models.DecimalField()
+    quantity= models.DecimalField(max_digits = 6, decimal_places = 2)
+    price= models.DecimalField(max_digits = 6, decimal_places = 2)
 
     class Meta:
         db_table = 'order_items'
